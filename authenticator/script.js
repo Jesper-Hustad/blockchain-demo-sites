@@ -102,7 +102,7 @@ async function loadContract() {
 }
 
 
-load();
+// load();
 
 updateStatus("hey")
 
