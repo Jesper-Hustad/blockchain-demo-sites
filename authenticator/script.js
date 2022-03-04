@@ -1,5 +1,7 @@
 // const vrs = s => ['0x' + s.substring((64*2)+2),'0x' + s.substring(2,66),'0x' + s.substring(66,(64*2)+2)]
 
+// const { param } = require("express/lib/request");
+
 // async function diploma(){
 
 //     const account = await getCurrentAccount();
@@ -109,23 +111,26 @@
 // console.log(keccak256("hello").toString('hex'))
 const $ = (s) => document.querySelector(s)
 
-let study_pos = 0
+let study_pos = -1
 
 const studies = [
+  {
+    "title" : "Masters in Physics",
+    "sub" : "Department of Sociology and Political Science, NTNU",
+    "description" : "Sociology is the study of social life, social change, and the social causes and consequences of human behavior. Sociologists investigate the structure of groups, organizations, and societies, and how people interact within these contexts.",
+    "content" : "MSPHYS,FNS,NTNU"
+  },
   {
     "title" : "Bachelor in computer science",
     "sub" : "Fakultet for informasjonsteknologi og elektroteknikk, NTNU",
     "description" : "Computer science is the study of computation, automation, and information. Computer science spans theoretical disciplines to practical disciplines. Computer science is generally considered an area of academic research and distinct from computer programming.",
+    "content" : "BIDATA,IDI,NTNU"
   },
   {
     "title" : "Masters in Sociology",
     "sub" : "Department of Sociology and Political Science, NTNU",
     "description" : "Sociology is the study of social life, social change, and the social causes and consequences of human behavior. Sociologists investigate the structure of groups, organizations, and societies, and how people interact within these contexts.",
-  },
-  {
-    "title" : "Masters in Physics",
-    "sub" : "Department of Sociology and Political Science, NTNU",
-    "description" : "Sociology is the study of social life, social change, and the social causes and consequences of human behavior. Sociologists investigate the structure of groups, organizations, and societies, and how people interact within these contexts.",
+    "content" : "MSOS,SPS,NTNU"
   },
 ]
 
@@ -140,31 +145,64 @@ console.log(urlParams);
 
 async function signIn(){
   
+  study_pos = (study_pos+1)%3
+
   show()
-  await sleep(900)
-  hide()
+  await sleep(100)
+  document.getElementById("studies-card").style="display: none;"
+  await sleep(500)
+  document.getElementById("studies-card").style=""
 
+  await sleep(80)
 
-  // window.location.search = `?name=${nameInput}`
-  nameInput = document.getElementById("usr").value
-  document.getElementById("header-user-text").innerText = nameInput
-  document.getElementById("label-user-text").innerText = nameInput
-  document.getElementById("usr").value = ""
-
+  // Display completed studies
   $("#study-title").innerText =       studies[study_pos].title
   $("#study-sub").innerText =         studies[study_pos].sub
   $("#study-description").innerText = studies[study_pos].description
   $("#study-diploma").style = ""
 
-  study_pos += 1
+  await sleep(150)
+
+  // display name
+  nameInput = document.getElementById("usr").value
+  document.getElementById("header-user-text").innerText = nameInput
+  await sleep(80)
+  document.getElementById("label-user-text").innerText = nameInput
+  document.getElementById("usr").value = ""
+  hide()
+
+
+
+
+
+  
+
+  
+
+
+  
 }
 
 
 function show () {
-  document.getElementById("account-body").style="position: absolute;"
+  // document.getElementById("account-body").style="position: absolute;"
   document.getElementById("spinner").classList.add("show");
 }
 function hide () {
-  document.getElementById("account-body").style=""
+  // document.getElementById("account-body").style=""
   document.getElementById("spinner").classList.remove("show");
 }
+
+
+// 
+
+function redirect(){
+  const paramObj = {
+    "name" : document.getElementById("header-user-text").innerText,
+    "desc" : studies[study_pos].title,
+    "content" : studies[study_pos].content,
+  }
+  const params = new URLSearchParams(paramObj).toString();
+  window.location.href = "/signer-service?" + params;
+}
+

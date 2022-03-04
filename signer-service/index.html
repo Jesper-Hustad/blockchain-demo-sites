@@ -27,8 +27,9 @@
 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/certificate.css"> -->
 
-    <script refer src="script.js"></script>
+    
 
     <style>
       .bd-placeholder-img {
@@ -101,127 +102,90 @@
     <br>
 
 
+
     <div class="d-flex justify-content-center">
-      <img class="logo-big" src="images/id-logo.png">
+      <img  id="fancy-logo" style="display: none;" class="logo-big" src="images/id-logo.png">
 
     </div>
-    
-
-    <!-- <div  class="h-100 p-5 bg-light border rounded-3">
-      <div class="container-fluid py-2">
-            <h3>Account settings</h3>
-            <label for="usr"><b>Current user:</b></label>
-            <label for="usr" id="label-user-text"></label>
-            <br><br>
-          <div class="form-group">
-            
-            <input type="text" class="form-control" id="usr" style="max-width: 350px;">
-            <br>
-            <button type="button" class="btn btn-primary" onclick="signIn()">Sign in with new user</button>
-          </div>
-    
-        </div>
-      </div> -->
-    
+        
     <br><br><br>
 
+    <div class="p-2 mb-1 bg-light rounded-3 border border-secondary">
 
-    <div class="p-5 mb-4 bg-light rounded-3">
+
+
+      <!-- PART 1 CERTIFICATE SCREEN -->
+      <div id="upload-content">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Create credential</h1>
-        <!-- <p class="fs-4">These are the educational degrees you have achieved at NTNU that we have stored on you:</p> -->
-
+        
+        <div class="d-flex justify-content-center">
+          <h1 >Upload certificate</h1><br>
+        </div>
+        
+        
+        <div class="d-flex justify-content-center">
+          <object type="image/svg+xml" data="images/certification.svg" id="certificate" class="certificate">
+          </object>
+        </div>
         
 
-        <div class="container pm-certificate-container">
-          <div class="outer-border"></div>
-          <div class="inner-border"></div>
-          
-          <div class="pm-certificate-border col-xs-12">
-            <div class="row pm-certificate-header">
-              <div class="pm-certificate-title cursive col-xs-12 text-center">
-                <h2>Buffalo Public Schools Certificate of Completion</h2>
-              </div>
-            </div>
-      
-            <div class="row pm-certificate-body">
-              
-              <div class="pm-certificate-block">
-                  <div class="col-xs-12">
-                    <div class="row">
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                      <div class="pm-certificate-name underline margin-0 col-xs-8 text-center">
-                        <span class="pm-name-text bold">TrueNorth Administrator</span>
-                      </div>
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                    </div>
-                  </div>          
-      
-                  <div class="col-xs-12">
-                    <div class="row">
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                      <div class="pm-earned col-xs-8 text-center">
-                        <span class="pm-earned-text padding-0 block cursive">has earned</span>
-                        <span class="pm-credits-text block bold sans">PD175: 1.0 Credit Hours</span>
-                      </div>
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                      <div class="col-xs-12"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="col-xs-12">
-                    <div class="row">
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                      <div class="pm-course-title col-xs-8 text-center">
-                        <span class="pm-earned-text block cursive">while completing the training course entitled</span>
-                      </div>
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                    </div>
-                  </div>
-      
-                  <div class="col-xs-12">
-                    <div class="row">
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                      <div class="pm-course-title underline col-xs-8 text-center">
-                        <span class="pm-credits-text block bold sans">BPS PGS Initial PLO for Principals at Cluster Meetings</span>
-                      </div>
-                      <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                    </div>
-                  </div>
-              </div>       
-              
-              <div class="col-xs-12">
-                <div class="row">
-                  <div class="pm-certificate-footer">
-                      <div class="col-xs-4 pm-certified col-xs-4 text-center">
-                        <span class="pm-credits-text block sans">Buffalo City School District</span>
-                        <span class="pm-empty-space block underline"></span>
-                        <span class="bold block">Crystal Benton Instructional Specialist II, Staff Development</span>
-                      </div>
-                      <div class="col-xs-4">
-                        <!-- LEAVE EMPTY -->
-                      </div>
-                      <div class="col-xs-4 pm-certified col-xs-4 text-center">
-                        <span class="pm-credits-text block sans">Date Completed</span>
-                        <span class="pm-empty-space block underline"></span>
-                        <span class="bold block">DOB: </span>
-                        <span class="bold block">Social Security # (last 4 digits)</span>
-                      </div>
-                  </div>
-                </div>
-              </div>
-      
-            </div>
-      
-          </div>
+        <div class="d-flex justify-content-center">
+          <pre>
+certificate = {
+  "issuer"  : 0x639995536426000546395BF162c3f59cF81B30d6 <i>(NTNU)</i>
+  "holder"  : 0x26b79b5C6a4B5e7103fF0764965D743F910b7F31 <i id="code-name">(Jesper Hustad)</i>
+  "content" : <span id="code-content"></span>
+}
+          </pre>
+        </div>
+ 
+        <br>
+        <div class="d-flex justify-content-center">
+          <button onclick="upload()" type="button" class="btn btn-success btn-lg"><i class="fa fa-upload" aria-hidden="true" style="margin-right: 8px;"></i> Upload to Blockchain ID </button>
         </div>
 
-
-
-
-
+        <br>
+        <div class="d-flex justify-content-center">
+          <p>Upload the certificate in the Blockchain ID system.</p>
+        </div>
 
       </div>
+    </div>
+
+
+
+    <!-- PART 2 SUCcESS SCREEN -->
+    <div id="sucess-card" style="display: none;">
+
+      
+      <br><br>
+      <div class="d-flex justify-content-center">
+        <i class="fa fa-check" style="font-size:120px;color:rgb(114, 223, 104)"></i>
+      </div>
+
+
+      <div class="d-flex justify-content-center">
+        <h1>Success</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p>Certificate was successfully uploaded to the blockchain.</p>
+      </div>
+      <br>
+
+      <div class="d-flex justify-content-center">
+        <pre>
+event certificate = {
+  "transaction" : 0xEFD1Eae6A603278EEDDe473C69401Ff66b6b5e0b
+  "status" : "success"
+  "statusCode" : 200
+}       </pre>
+      </div>
+      
+      
+      
+
+    </div>
+
     </div>
 
 
@@ -258,5 +222,10 @@
     
   
 
-</body></html>
+</body>
+
+
+<script defer src="script.js"></script>
+
+</html>
 

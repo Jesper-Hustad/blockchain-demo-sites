@@ -100,7 +100,7 @@
     </header>
 
 
-    <div  class="h-100 p-5 bg-light border rounded-3">
+    <div  class="h-100 p-5 bg-light border rounded-3" id="settings">
       <div class="container-fluid py-2">
             <h3>Account settings</h3>
             <label for="usr"><b>Current user:</b></label>
@@ -108,7 +108,7 @@
             <br><br>
           <div class="form-group">
             <!-- <label for="usr"><b>Name:</b></label> -->
-            <input type="text" class="form-control" id="usr" style="max-width: 350px;">
+            <input  placeholder="Full name" type="text" class="form-control" id="usr" style="max-width: 350px;">
             <br>
             <button type="button" class="btn btn-primary" onclick="signIn()">Sign in with new user</button>
           </div>
@@ -119,7 +119,7 @@
     <br><br><br>
 
 
-    <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="p-5 mb-4 bg-light rounded-3" id="studies-card">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Completed studies</h1>
         <p class="fs-4">These are the educational degrees you have achieved at NTNU that we have stored on you:</p>
@@ -129,9 +129,9 @@
             <h5 id="study-title" class="card-title"></h5>
             <h6 id="study-sub" class="card-subtitle mb-2 text-muted"></h6>
             <p  id="study-description" class="card-text"></p>
-            <a href="/signer-service">
-            <button  id="study-diploma" style="display :none" type="button" class="btn btn-success">Connect diploma to <b>Blockchain ID™</b></button>
-            </a>
+            <!-- <a href=""> -->
+            <button  onclick="redirect()" id="study-diploma" style="display :none" type="button" class="btn btn-success">Connect diploma to <b>Blockchain ID™</b></button>
+            <!-- </a> -->
           </div>
         </div>
 
