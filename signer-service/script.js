@@ -101,9 +101,9 @@ async function loadContract() {
       ], '0x16441b648422b14F9c32e5E3FaFf619A5a4CEf67');
 }
 
+// load()
 
-
-const queryString = window.location.search;
-const urlParams = Object.fromEntries(new URLSearchParams(queryString))
-console.log(urlParams);
-updateStatus(JSON.stringify(urlParams));
+// const queryString = window.location.search;
+// const urlParams = Object.fromEntries(new URLSearchParams(queryString))
+// console.log(urlParams);
+// updateStatus(JSON.stringify(urlParams));
