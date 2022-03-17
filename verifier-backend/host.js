@@ -4,6 +4,8 @@ const port = 3000
 const Web3 = require('web3');
 const truffle_connect = require('./connection/contractConnection.js');
 const bodyParser = require('body-parser');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+require('dotenv').config(); // Load .env file
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,11 +20,12 @@ app.use(express.static(__dirname))
 
 app.get('/get', (req, res) => {
   console.log("Getting info");
-  truffle_connect.getCredentials("0xE28B62a1796442C6a21940aCA90F0b6644a4D8C0",function (answer){
-
+  truffle_connect.getCredentials("0xa4A8203C9f5D1f3c45316976891564481277903e",function (answer){
+    if(!Array.isArray(answer)){
+      res.send(answer);
+      return;
+    }
     const obj = answer.map(i => i.returnValues).map(i => {return {"signer":i.signer, ...(JSON.parse(i.description))}});
-    // console.log(obj);
-    // const json = JSON.parse(obj[0].description);
     res.send(obj);
   })
 });
@@ -30,9 +33,9 @@ app.get('/get', (req, res) => {
 
 app.listen(port, () => {
 
-  // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-  truffle_connect.web3 = new Web3(new Web3.providers.HttpProvider("http://10.0.0.64:7545"));
-
+  //truffle_connect.web3 = new Web3(new Web3.providers.HttpProvider("http://10.0.0.64:7545"));
+  truffle_connect.web3 = new Web3(new HDWalletProvider(process.env.MNEMONIC,
+      `https://rpc-mumbai.matic.today`))
   console.log("Express Listening at http://localhost:" + port);
 
 });

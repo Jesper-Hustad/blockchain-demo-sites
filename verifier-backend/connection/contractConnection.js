@@ -5,15 +5,18 @@ var Verifier = contract(verifier_artifact);
 
 module.exports = {
     getCredentials: function(addr,callback) {
-        var self = this;
+        let self = this;
 
         Verifier.setProvider(self.web3.currentProvider);
 
-        var verifier;
-        Verifier.deployed().then(function(instance){
+        let verifier;
+        Verifier.deployed().then(async function (instance) {
             verifier = instance;
-            //return verifier.getCredentials.call(addr,{from: addr});
-            return verifier.getPastEvents("Credentials", {fromBlock: 5,toBlock:"latest"})
+            // TODO: ONLY FOR MVP. Fix amount of events for release
+            return verifier.getPastEvents("Credentials", {
+                fromBlock: (await self.web3.eth.getBlockNumber() - 3499),
+                toBlock: "latest"
+            })
         }).then(function (value){
           callback(value.valueOf());
         }).catch(function (e){
