@@ -17,7 +17,7 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
      },
       matic: {
-          provider: () => new HDWalletProvider(process.env.MNEMONIC,
+          provider: () => new HDWalletProvider("simple bring suggest weasel benefit right pluck clown control ice confirm width",
               `https://rpc-mumbai.matic.today`),
           network_id: 80001,
           confirmations: 2,
