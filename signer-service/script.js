@@ -6,26 +6,33 @@ const vrs = s => ['0x' + s.substring((64*2)+2),'0x' + s.substring(2,66),'0x' + s
 
 async function diploma(){
 
-    // const account = await getCurrentAccount();
+      const queryString = window.location.search;
+      const urlParams = Object.fromEntries(new URLSearchParams(queryString))
+  
+      const NTNU_PUBLIC_ADDRESS = '0x639995536426000546395BF162c3f59cF81B30d6'
+
+      const NTNU_PRIVATE_KEY = 'f7a34185b2a5f923c421edd0aef206c286cb16103952743b734567e05577f2e3'
+
+      let message = urlParams + ": " + urlParams.content + " (" + urlParams.desc + ")"
+
+      const target = await getCurrentAccount();  
+      // let target = "0xE28B62a1796442C6a21940aCA90F0b6644a4D8C0"
+  
+      const contractData = await window.main(message, NTNU_PRIVATE_KEY, target)
+
+      signContract(contractData)
+}
+
+async function signContract(data){
+  const acc = await getCurrentAccount(); 
+  
+  show()
+  const contractResult = await window.contract.methods.createCredentials(...data).send({from: acc});
+  hide()
 
 
-
-    // // KOMMER FRA SERVER NTNU
-    // const msgString = "Bachelor i ingeniørfag, Fakultet for informasjonsteknologi og elektroteknikk, NTNU"
-    
-    // // const msg = '0x' + keccak256(msgString).toString('hex')
-    // // const ethResult = await window.ethereum.request({
-    // // method: 'eth_sign',
-    // // params: [account, msg],
-    // // });
-    
-    
-    // const contractResult = await window.contract.methods
-    // .createCredentials(msgString, '0x1c', '0xa2c3cedaa1933cbff3d118201349ab90894a0b7a5a7d14c770e9e2980098e9d0' ,'0x6d8263b4cd6d1a9b19eab141000319686df414f371ff35fc95d4e413363401c3')
-    // .send({ from: account });
-
-    // console.log(ethResult, contractResult)
-
+  resultScreen(contractResult)
+  console.log(contractResult)
 }
 
 async function loadWeb3() {
@@ -102,7 +109,7 @@ async function loadContract() {
           "stateMutability": "nonpayable",
           "type": "function"
         }
-      ], '0x16441b648422b14F9c32e5E3FaFf619A5a4CEf67');
+      ], '0xd74BAc34Cf6A04274Fcd370040a001E22D557C40');
 }
 
 
@@ -115,7 +122,7 @@ function hide () {
   document.getElementById("spinner").classList.remove("show");
 }
 
-// load()
+load()
 
 
 
@@ -125,6 +132,7 @@ svgDoc.addEventListener("load", async function(){
 
   const queryString = window.location.search;
   const urlParams = Object.fromEntries(new URLSearchParams(queryString))
+  
 
   console.log(urlParams, window.location.search)
 
@@ -138,7 +146,7 @@ svgDoc.addEventListener("load", async function(){
   svgDoc = svgDoc.getSVGDocument()
 
   show()
-  await sleep(700)
+  // await sleep(700)
   svgDoc.getElementById('data-description').innerHTML = desc;
 
   // style if big text
@@ -165,12 +173,40 @@ svgDoc.addEventListener("load", async function(){
 // };
 
 async function upload(){
+  diploma()
+  // resultScreen({
+  //   "blockHash": "0x8c3c1f0b4e87b9b31ca18432a7f9837411c3e5e0b8e72b1f1acf2d1bbc350e81",
+  //   "blockNumber": 25555662,
+  //   "contractAddress": null,
+  //   "cumulativeGasUsed": 5649586,
+  //   "effectiveGasPrice": "0x5969371f",
+  //   "gasUsed" : 33948,
+  //   "transactionHash": "0xc76072cf31feab819ebaae18b48c33ecd58ec29c67cb201413b044c0431fa908"
+  // })
+}
+
+async function resultScreen(contractResult){
+  const url = 'https://polygonscan.com/tx/' + contractResult.blockHash
+  const blockNumber = contractResult.blockNumber
+  const gas = contractResult.gasUsed
+
+  document.getElementById('polygonscan-link').setAttribute('href',url)
+
+  document.getElementById('success-pre').innerHTML = 
+  `event certificate = {
+    "transaction" : ${contractResult.blockHash}
+    "blockNumber" : ${blockNumber}
+    "gasUsed" : ${gas}
+    "statusCode" : 200
+  }`
+
   show()
   await sleep(100)
   document.getElementById("upload-content").style="display: none;"
   await sleep(200)
   document.getElementById("sucess-card").style=""
-  document.getElementById("fancy-logo").style=""
-  
+  document.getElementById("fancy-logo").style="" 
   hide()
 }
+
+
