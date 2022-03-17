@@ -39,7 +39,7 @@ app.get('/get', (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   const mnemonic = "simple bring suggest weasel benefit right pluck clown control ice confirm width"
   const rpcUrl =  'https://rpc-mumbai.matic.today'
   truffle_connect.web3 = new Web3(new HDWalletProvider(mnemonic,rpcUrl))
