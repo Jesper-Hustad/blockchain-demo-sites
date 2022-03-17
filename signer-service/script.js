@@ -186,7 +186,7 @@ async function upload(){
 }
 
 async function resultScreen(contractResult){
-  const url = 'https://polygonscan.com/tx/' + contractResult.blockHash
+  const url = 'https://mumbai.polygonscan.com/tx/' + contractResult.transactionHash
   const blockNumber = contractResult.blockNumber
   const gas = contractResult.gasUsed
 
@@ -194,7 +194,7 @@ async function resultScreen(contractResult){
 
   document.getElementById('success-pre').innerHTML = 
   `event certificate = {
-    "transaction" : ${contractResult.blockHash}
+    "transaction" : ${contractResult.transactionHash}
     "blockNumber" : ${blockNumber}
     "gasUsed" : ${gas}
     "statusCode" : 200
