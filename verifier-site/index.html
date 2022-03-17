@@ -28,48 +28,10 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <script refer src="script.js"></script>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <script defer src="script.js"></script>
 
     
-  <style>
-            .flipX video::-webkit-media-text-track-display {
-                transform: matrix(-1, 0, 0, 1, 0, 0) !important;
-            }
-            .flipXY video::-webkit-media-text-track-display {
-                transform: matrix(-1, 0, 0, -1, 0, 0) !important;
-            }
-            .flipXYX video::-webkit-media-text-track-display {
-                transform: matrix(1, 0, 0, -1, 0, 0) !important;
-            }</style><style>
-            @keyframes blinkWarning {
-                0% { color: red; }
-                100% { color: white; }
-            }
-            @-webkit-keyframes blinkWarning {
-                0% { color: red; }
-                100% { color: white; }
-            }
-            .blinkWarning {
-                -webkit-animation: blinkWarning 1s linear infinite;
-                -moz-animation: blinkWarning 1s linear infinite;
-                animation: blinkWarning 1s linear infinite;
-            }</style></head>
+  </head>
   <body>
     
 <main>
@@ -103,13 +65,12 @@
     <div  class="h-100 p-5 bg-light border rounded-3" id="settings">
       <div class="container-fluid py-2">
             <h3>Login </h3>
-            <label for="usr"><b>Current user:</b></label>
-            <label for="usr" id="label-user-text"></label>
+            <label ><b>Current user:</b></label>
+          <h5><span class="showAccount"></span></h5>
             <br><br>
           <div class="form-group">
-              <button  onclick="signIn()" id="study-diploma" type="button" class="btn btn-success">Sign in with <b>Blockchain ID™</b></button>
+              <button id="loggin-button" type="button" class="btn btn-success">Sign in with <b>Blockchain ID™</b></button>
           </div>
-    
         </div>
         </div>
     
@@ -120,12 +81,15 @@
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Your Diplomas</h1>
         <p class="fs-4">These are the diplomas you have achieved that we have stored on you:</p>
-
+        <pre id="data-json"></pre>
         <div class="card" style="width: 40rem; display :none">
           <div class="card-body">
-            <h5 id="study-title" class="card-title"></h5>
-            <h6 id="study-sub" class="card-subtitle mb-2 text-muted"></h6>
-            <p  id="study-description" class="card-text"></p>
+              <h4>Signer</h4>
+            <h5 id="signer" class="card-title"></h5>
+              <h5>Owner</h5>
+            <h6 id="target" class="card-subtitle mb-2 text-muted"></h6>
+              <h5>Certificate</h5>
+            <p  id="certificate" class="card-text"></p>
           </div>
         </div>
 
