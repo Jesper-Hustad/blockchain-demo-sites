@@ -45,15 +45,15 @@ async function loadWeb3() {
 async function load() {
     await loadWeb3();
     window.contract = await loadContract();
-    updateStatus('Ready!');
+    // updateStatus('Ready!');
 }
 
-function updateStatus(status) {
+// function updateStatus(status) {
     
-    const statusEl = document.querySelector("#status")
-    statusEl.innerHTML = status;
-    console.log(status);
-}
+//     const statusEl = document.querySelector("#status")
+//     statusEl.innerHTML = status;
+//     console.log(status);
+// }
 
 async function getCurrentAccount() {
     const accounts = await window.web3.eth.getAccounts();
