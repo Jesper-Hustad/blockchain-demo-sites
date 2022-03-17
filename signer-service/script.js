@@ -13,7 +13,7 @@ async function diploma(){
 
       const NTNU_PRIVATE_KEY = 'f7a34185b2a5f923c421edd0aef206c286cb16103952743b734567e05577f2e3'
 
-      let message = urlParams + ": " + urlParams.content + " (" + urlParams.desc + ")"
+      let message = urlParams.name + ": " + urlParams.content + " (" + urlParams.desc + ")"
 
       const target = await getCurrentAccount();  
       // let target = "0xE28B62a1796442C6a21940aCA90F0b6644a4D8C0"
