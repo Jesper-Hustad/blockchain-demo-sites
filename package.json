@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "node host.js",
-    "web": "node host.js"
+    "web": "node app.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

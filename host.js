@@ -1,7 +1,7 @@
 const express = require('express')
 
 const app = express()
-const port = 80
+const port = process.env.PORT || 3000
 
 
 const Web3 = require('web3');
@@ -14,6 +14,8 @@ const services = ['authenticator', 'signer-service']
 
 // services.forEach(s => app.use(express.static(s)))
 app.use(express.static(__dirname))
+
+
 
 
 // parse application/json
@@ -38,8 +40,9 @@ app.get('/get', (req, res) => {
 
 
 app.listen(port, () => {
-  truffle_connect.web3 = new Web3(new HDWalletProvider("simple bring suggest weasel benefit right pluck clown control ice confirm width",
-      `https://rpc-mumbai.matic.today`))
+  const mnemonic = "simple bring suggest weasel benefit right pluck clown control ice confirm width"
+  const rpcUrl =  'https://rpc-mumbai.matic.today'
+  truffle_connect.web3 = new Web3(new HDWalletProvider(mnemonic,rpcUrl))
   console.log(`Site available at http://localhost:${port}/${services[0]}`)
 })
 
