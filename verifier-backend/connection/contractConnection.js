@@ -14,6 +14,7 @@ module.exports = {
             verifier = instance;
             // TODO: ONLY FOR MVP. Fix amount of events for release
             return verifier.getPastEvents("Credentials", {
+                filter: { from: addr },
                 fromBlock: (await self.web3.eth.getBlockNumber() - 3499),
                 toBlock: "latest"
             })

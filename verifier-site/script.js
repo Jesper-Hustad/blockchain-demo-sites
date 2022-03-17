@@ -36,8 +36,10 @@ async function getAccount() {
 
 
 async function loggedinn(){
-    let c = await fetch('http://localhost:3000/get');
-    let d = (await c.json())[0];
+    let c = await fetch('/get');
+    let d = (await c.json());
+    let last = d.length-1;
+    d = d[last]
     console.log(d)
     signerfield.innerText = d.signer
     targetfield.innerText = d.target

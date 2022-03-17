@@ -1,4 +1,4 @@
 node_modules
 .vscode
 .idea
-./signer-service/.env
+.env
