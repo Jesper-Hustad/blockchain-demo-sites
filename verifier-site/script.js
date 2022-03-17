@@ -36,7 +36,7 @@ async function getAccount() {
 
 
 async function loggedinn(){
-    let c = await fetch('http://localhost:3000/get');
+    let c = await fetch('/get');
     let d = (await c.json());
     let last = d.length-1;
     d = d[last]
