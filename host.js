@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 app.get('/get', (req, res) => {
   console.log("Getting info");
-  truffle_connect.getCredentials("0xa4A8203C9f5D1f3c45316976891564481277903e",function (answer){
+  truffle_connect.getCredentials(" ",function (answer){
     if(!Array.isArray(answer)){
       res.send(answer);
       return;
