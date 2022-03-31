@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 // AUTO REDIRECT helper function
 app.get('/', (req, res) => {
-  res.redirect('/authenticator');
+  res.redirect('/navigator-site');
 });
 
 app.get('/get', (req, res) => {
