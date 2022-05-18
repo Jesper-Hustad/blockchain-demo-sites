@@ -9,8 +9,8 @@
     "web3": "^1.7.1"
   },
   "scripts": {
-    "dev": "node host.js",
-    "web": "node host.js"
+    "dev": "node index.js",
+    "web": "node index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

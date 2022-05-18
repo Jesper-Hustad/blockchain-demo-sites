@@ -1,22 +1,22 @@
-# blockchain-demo-sites
+# Blockchain self sovereign identity demo
 
-Multiple websites hosted as demos for blockchain ID system
+This is a demo of self sovereign identity using blockchain.  
+You can create some credentials at an issuer (university) and verify them (hiring website).  
+The demo uses a testnet (Matic mumbai) which is built with Etherium.  
+Smart contacts are used to verify the credentials and store them on chain.  
+The backend uses truffle for deploying and interacting with the blockchain.
+
+
+## Try it yourself
+You can try the demo out yourself by clicking this [link](https://blockchain-mvp.herokuapp.com/).  
+
+
 
 ## Getting started
+To run the demo locally clone the repo, cd into directory, and run these commands:
 ```cmd
 npm install
 npm run dev
 ```
 
-## Authenticator
-Site of an authority. In this example it's represented by a university (NTNU)
-
-**Site available [here](https://blockchain-mvp.herokuapp.com/authenticator/)**
-
-## Signer service
-Site of blockchain service. Represented by a fictional company "Blockchain ID"
-
-**Site available [here](https://blockchain-mvp.herokuapp.com/verifier-site/)**
-
-## Verifier
-Site of a verifier. Represented by a job search site
+You may have to change the RPC url in the .env file if it's no longer working.

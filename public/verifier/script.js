@@ -7,6 +7,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const queryString = window.location.search;
 const urlParams = Object.fromEntries(new URLSearchParams(queryString))
+let userAccount = null
 
 //buttons
 const loginButton = document.querySelector('#loggin-button');
@@ -30,13 +31,14 @@ console.log(urlParams);
 async function getAccount() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     const account = accounts[0];
+    userAccount = account
     showAccount.innerHTML = account;
     loggedinn()
 }
 
 
 async function loggedinn(){
-    let c = await fetch('/get');
+    let c = await fetch('/getCredentials');
     let d = (await c.json());
     let last = d.length-1;
     d = d[last]

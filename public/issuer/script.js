@@ -203,6 +203,6 @@ function redirect(){
     "content" : studies[study_pos].content,
   }
   const params = new URLSearchParams(paramObj).toString();
-  window.location.href = "/signer-service?" + params;
+  window.location.href = "/sign-service?" + params;
 }
 
