@@ -20,3 +20,8 @@ npm run dev
 ```
 
 You may have to change the RPC url in the .env file if it's no longer working.
+
+
+## File structure
+
+The public folder contains 4 static websites....
